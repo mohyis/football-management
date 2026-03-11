@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = require('../database/database');
-const FootballTeam = require('./footballteam');
+const footballTeam = require('./footballteam');
 
 
 class footballPlayer extends Model {}
@@ -51,9 +51,9 @@ footballPlayer.init(
     modelName: 'footballPlayer', // We need to choose the model name
   },
 );
-FootballTeam.hasMany(footballPlayer, {foreignKey: 'teamId', as: 'player'})
+footballTeam.hasMany(footballPlayer, {foreignKey: 'teamId', as: 'player'})
 
-footballPlayer.belongsTo(FootballTeam, {
+footballPlayer.belongsTo(footballTeam, {
   foreignKey: 'teamId',
   as: 'team'
 })

@@ -13,7 +13,8 @@ exports.createTeam = async(req, res)=>{
         //create the team records in database
 
         const team = await teamModel.create(newTeam);
-        // send a successn response
+
+        // send a success response
 
         res.status(201).json({
             message: 'team created successfully',

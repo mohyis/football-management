@@ -1,9 +1,9 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = require('../database/database');
 
-class FootballTeam extends Model {}
+class footballTeam extends Model {}
 
-FootballTeam.init(
+footballTeam.init(
   {
     // Model attributes are defined here
     id: {
@@ -32,8 +32,8 @@ FootballTeam.init(
   {
     // Other model options go here
     sequelize, // We need to pass the connection instance
-    modelName: 'FootballTeam', // We need to choose the model name
+    modelName: 'footballTeam', // We need to choose the model name
   },
 );
 
-module.exports = FootballTeam
+module.exports = footballTeam
