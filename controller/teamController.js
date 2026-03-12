@@ -67,3 +67,32 @@ exports.getOneTeam = async(req,res)=>{
         })
     }
 }
+
+exports.updateFootballTeam = async(req,res)=>{
+
+    try {
+        const {id} = req.params
+        const {teamName, coachName} = req.body
+
+        if(!id){
+            return res.status(404).json({
+                message: 'Not found'
+            })
+        }
+
+        const update = {
+            teamName,
+            coachName
+        }
+        const updateTeam = await teamModel.update(update, {where: {id}})
+
+        res.status(200).json({
+            message: 'team updated successfully',
+            updateTeam
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        })
+    }
+}
