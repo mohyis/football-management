@@ -48,7 +48,7 @@ exports.getAllTeams = async (req,res)=>{
 exports.getOneTeam = async(req,res)=>{
     try {
         const {id} = req.params
-        const team = await teamModel.findByPk(id)
+        const team = await teamModel.findByPk(id, {include: {model: footballPlayer, as: 'player'}})
         if(!team){
             res.status(404).json({
                 message: 'Team not found'

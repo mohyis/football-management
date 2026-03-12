@@ -60,4 +60,29 @@ exports.getOnePlayer = async(req,res)=>{
             message: error.message
         })
     }
+};
+
+exports.updateFootballPlayer = async(req,res)=>{
+    try {
+        const {id} = req.params;
+        const {teamId, playerName, age, position} = req.body
+        const player = {
+            teamId, playerName, age, position
+        }
+        const updatePlayer = await playerModel.update(player, {where: {id}})
+        if(!updatePlayer){
+            return res.status(404).json({
+                message: 'player not found'
+            })
+        }
+
+        res.status(200).json({
+            message: 'player updated successfully'
+        })
+        
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        })
+    }
 }
