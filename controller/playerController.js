@@ -65,7 +65,7 @@ exports.getOnePlayer = async(req,res)=>{
 exports.updateFootballPlayer = async(req,res)=>{
     try {
         const {id} = req.params;
-        const {teamId, playerName, age, position} = req.body
+        const {teamId, playerName, age, position} = req.body;
         const player = {
             teamId, playerName, age, position
         }
