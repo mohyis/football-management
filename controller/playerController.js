@@ -1,5 +1,5 @@
 const playerModel = require('../models/footballplayer');
-const FootballTeam = require('../models/footballteam');
+const footballTeam = require('../models/footballteam');
 
 exports.createPlayer = async (req,res)=>{
     try {
@@ -24,7 +24,7 @@ exports.createPlayer = async (req,res)=>{
 exports.getAllPlayer = async(req,res)=>{
     try {
         const players = await playerModel.findAll({
-            include: {model: FootballTeam, as: "team"}
+            include: {model: footballTeam, as: "team"}
         });
         res.status(200).json({
             message: `All Players found and the total is ${players.length}`,
@@ -41,7 +41,7 @@ exports.getOnePlayer = async(req,res)=>{
     try {
         const {id} = req.params
         const player = await playerModel.findByPk(id, 
-            {include: {model: FootballTeam, as: 'team'}}
+            {include: {model: footballTeam, as: 'team'}}
         )
 
         if(!player){

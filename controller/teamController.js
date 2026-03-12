@@ -1,6 +1,5 @@
 const { where } = require('sequelize')
 const footballPlayer = require('../models/footballplayer')
-const footballTeam = require('../models/footballteam')
 const teamModel = require('../models/footballteam')
 
 exports.createTeam = async(req, res)=>{
@@ -29,7 +28,7 @@ exports.createTeam = async(req, res)=>{
         })
     }
 
-}
+};
 
 exports.getAllTeams = async (req,res)=>{
     try {
@@ -44,7 +43,7 @@ exports.getAllTeams = async (req,res)=>{
             message: error.message
         })
     }
-}
+};
 
 exports.getOneTeam = async(req,res)=>{
     try {
