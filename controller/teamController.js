@@ -1,3 +1,4 @@
+const { where } = require('sequelize')
 const footballPlayer = require('../models/footballplayer')
 const footballTeam = require('../models/footballteam')
 const teamModel = require('../models/footballteam')
@@ -87,11 +88,33 @@ exports.updateFootballTeam = async(req,res)=>{
         const updateTeam = await teamModel.update(update, {where: {id}})
 
         res.status(200).json({
-            message: 'team updated successfully',
-            updateTeam
+            message: 'team updated successfully'
         })
     } catch (error) {
         res.status(500).json({
+            message: error.message
+        })
+    }
+};
+
+exports.deleteFootballTeam = async(req,res)=>{
+    try {
+        const {id} = req.params
+
+        if(!id){
+            return res.status(404).json({
+                message: 'team not found'
+            })
+        }
+
+        const deleteTeam = await teamModel.destroy({where: {id}})
+
+        res.status(200).json({
+            message: 'team deleted successfully'
+        })
+        
+    } catch (error) {
+         res.status(500).json({
             message: error.message
         })
     }
