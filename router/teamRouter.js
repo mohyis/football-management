@@ -3,7 +3,7 @@ const { createTeam, getAllTeams, getOneTeam, updateFootballTeam, deleteFootballT
 const router = express.Router();
 
 
-router.post('/createTeam', createTeam)
+router.post('/team', createTeam)
 router.get('/teams', getAllTeams)
 router.get('/team/:id', getOneTeam)
 router.put('/team/:id', updateFootballTeam)
